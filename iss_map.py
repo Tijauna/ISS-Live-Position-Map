@@ -15,12 +15,9 @@ turtle.penup()
 turtle.setx(latitude)
 turtle.sety(longitude)
 
-print longitude
-print latitude
-
 t2 = turtle.Turtle()
-t2.setx(10)
-t2.sety(90)
+
+t3 = turtle.Turtle()
 
 screen = turtle.Screen()
 screen.setup(1024,512)
@@ -47,9 +44,16 @@ while (time < (time + 3600)):
     turtle.sety(latitude)
 
     t2.penup()
-    t2.setx(-170)
-    t2.sety(80)
+    t2.setx(-180)
+    t2.sety(85)
     t2.write(latitude)
+
+    t3.penup()
+    t3.setx(-180)
+    t3.sety(78)
+    t3.write(longitude)
+    
 
     sleep(1)
     t2.clear()
+    t3.clear()
