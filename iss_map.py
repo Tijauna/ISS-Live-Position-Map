@@ -15,11 +15,21 @@ turtle.penup()
 turtle.setx(latitude)
 turtle.sety(longitude)
 
+print longitude
+print latitude
+
+t2 = turtle.Turtle()
+t2.setx(10)
+t2.sety(90)
 
 screen = turtle.Screen()
-screen.setup(1024,478)
+screen.setup(1024,512)
 screen.setworldcoordinates(-180,-90,180,90)
 screen.bgpic('map_earth_bkg.gif')
+image = "ISS.gif"
+
+screen.addshape(image)
+turtle.shape(image)
 
 #get the ISS position data
 while (time < (time + 3600)):
@@ -31,10 +41,15 @@ while (time < (time + 3600)):
     latitude = float(datalist['latitude'])
     longitude = float(datalist['longitude'])
 
-    print latitude
-    print longitude
+
     turtle.penup()
-    turtle.setx(latitude)
-    turtle.sety(longitude)
+    turtle.setx(longitude)
+    turtle.sety(latitude)
+
+    t2.penup()
+    t2.setx(-170)
+    t2.sety(80)
+    t2.write(latitude)
 
     sleep(1)
+    t2.clear()
