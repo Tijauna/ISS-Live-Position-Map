@@ -12,15 +12,20 @@ def motion():
     t = t+1
     
     time_t.undo()  # undraw the last time update
-    time_t.write("Refreshes: "+ str(t), font=("Agency FB", 8, "bold"))  # Show the time variable t on screen
+    time_t.write("Refreshes: "+ str(t), font=("Agency FB", 8, "bold"))
+	
     longitudeDisplay.undo()
     longitudeDisplay.write(x_pos(t), font=("Agency FB", 8, "bold"))
+	
     latitudeDisplay.undo()
     latitudeDisplay.write(y_pos(t), font=("Agency FB", 8, "bold"))
+	
     velocityDisplay.undo()
     velocityDisplay.write("Velocity: "+ str(round(otherData(t)[0],2))+" km/h", font=("Agency FB", 8, "bold"))
+	
     altitudeDisplay.undo()
     altitudeDisplay.write("Altitude: "+ str(round(otherData(t)[1],2))+" km", font=("Agency FB", 8, "bold"))
+	
     visibilityDisplay.undo()
     visibilityDisplay.write("Visibility: "+ str(otherData(t)[2]), font=("Agency FB", 8, "bold"))
 
@@ -99,19 +104,19 @@ time_t.penup()
 time_t.setposition(100, -71)  
 time_t.write("Refreshes: " + str(t), font=("Agency FB", 8, "bold")) 
 
-velocity = otherData(t)[0]
+velocity = otherData(t)[0]  # For velocity output
 velocityDisplay = Turtle(visible=False)  
 velocityDisplay.penup()
 velocityDisplay.setposition(40, -77)
 velocityDisplay.write("Velocity: ", velocity, font=("Agency FB", 8, "bold"))
 
-altitude = otherData(t)[1]
+altitude = otherData(t)[1] # For altitude output
 altitudeDisplay = Turtle(visible=False)  
 altitudeDisplay.penup()
 altitudeDisplay.setposition(40, -71)
 altitudeDisplay.write("Altitude: ", altitude, font=("Agency FB", 8, "bold"))
 
-visibility = otherData(t)[2]
+visibility = otherData(t)[2] # For day/night output
 visibilityDisplay = Turtle(visible=False)  
 visibilityDisplay.penup()
 visibilityDisplay.setposition(100, -77)
