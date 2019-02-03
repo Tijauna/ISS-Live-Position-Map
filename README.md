@@ -11,5 +11,7 @@ New features in version 2:
 - General stability
 
 Live position data (latitude and longitude) sourced from http://open-notify.org/Open-Notify-API/ISS-Location-Now/
+
 Velocity, Altitude and Time-of-day data sourced from https://api.wheretheiss.at/v1/satellites/25544
+
 Animations created using Turtle, graphics created using Adobe Photoshop and online sources.
