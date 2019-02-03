@@ -4,11 +4,13 @@ from math import pi, sin, cos
 import json
 import urllib2
 
+t = 0
+
 def motion():
-    global n, t
+    global t
     turtle.setposition(x_pos(t), y_pos(t))
-    longitudeDisplay.write
     t = t+1
+    
     time_t.undo()  # undraw the last time update
     time_t.write("Refreshes: "+ str(t), font=("Agency FB", 8, "bold"))  # Show the time variable t on screen
     longitudeDisplay.undo()
@@ -22,18 +24,16 @@ def motion():
     visibilityDisplay.undo()
     visibilityDisplay.write("Visibility: "+ str(otherData(t)[2]), font=("Agency FB", 8, "bold"))
 
-
     screen.update()
 	
-    n = n + 1
-    screen.ontimer(motion, 100)
+    screen.ontimer(motion, 1000)
 
 def otherData(t):
     try:
 	url = "https://api.wheretheiss.at/v1/satellites/25544"
 	data = json.load(urllib2.urlopen(url))
     except:
-	exit()
+        pass
     
     velocity = float(data['velocity'])
     altitude = float(data['altitude'])
@@ -46,7 +46,7 @@ def x_pos(t):
         url = "http://api.open-notify.org/iss-now.json"
         data = json.load(urllib2.urlopen(url))
     except:
-	exit()
+	pass
 
     datalist = data['iss_position']
     latitude = float(datalist['latitude'])
@@ -60,14 +60,12 @@ def y_pos(t):
         url = "http://api.open-notify.org/iss-now.json"
         data = json.load(urllib2.urlopen(url))
     except:
-	exit()
+	pass
 
     datalist = data['iss_position']
     latitude = float(datalist['latitude'])
     longitude = float(datalist['longitude'])
     return latitude
-
-n = t = 0
 
 screen = turtle.Screen()
 screen.setup(905,452)
@@ -120,6 +118,5 @@ visibilityDisplay.setposition(100, -77)
 visibilityDisplay.write("Visibility: ", visibility, font=("Agency FB", 8, "bold"))
 
 
-screen.ontimer(motion, 100)
-
+screen.ontimer(motion, 1000)
 screen.exitonclick()
